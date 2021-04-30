@@ -40,7 +40,7 @@ def show_add_pet_form():
     if form.validate_on_submit():
         pet = Pet()
         pet.name = form.name.data
-        pet.species = form.species.data
+        pet.species = (form.species.data).lower()
         pet.photo_url = form.photo_url.data
         pet.age = form.age.data
         pet.notes = form.notes.data
@@ -48,6 +48,6 @@ def show_add_pet_form():
         flash(f"Added {pet.name} to adoptable pets!")
         db.session.add(pet)
         db.session.commit()
-        return redirect ("/")
+        return redirect("/")
     else:
         return render_template('add_pet_form.html', form=form)
