@@ -1,0 +1,17 @@
+{% extends base.html %}
+
+{% block title %} Adopt a Pet! {% endblock %}
+
+{% block content %}
+
+{% for pet in pets %}
+
+<div class="card" style="width: 18rem;">
+	<img class="card-img-top" src="{{ pet.photo_url }}" alt="photo of {{ pet.name }}">
+	<div class="card-body">
+		<p class="card-text"><a href="/{{ pet.id }}">{{ pet.name }}</a>
+		{% if pet.available %} <strong> is available!</strong> {% endif %}</p>
+	</div>
+  </div>
+
+{% endblock %}
